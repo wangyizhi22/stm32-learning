@@ -1,0 +1,112 @@
+{
+    "name": "led_blink",
+    "type": "ARM",
+    "dependenceList": [],
+    "srcDirs": [
+        "src"
+    ],
+    "outDir": "build",
+    "deviceName": "STM32F103C8",
+    "packDir": null,
+    "miscInfo": {
+        "uid": "7c3e1a94d28b46f0a5e9c3b7d1f80246"
+    },
+    "virtualFolder": {
+        "name": "<virtual_root>",
+        "files": [],
+        "folders": []
+    },
+    "targets": {
+        "Debug": {
+            "excludeList": [],
+            "toolchain": "GCC",
+            "compileConfig": {
+                "cpuType": "Cortex-M3",
+                "floatingPointHardware": "default",
+                "useCustomScatterFile": true,
+                "scatterFilePath": "STM32F103C8Tx_FLASH.ld",
+                "storageLayout": {
+                    "RAM": [
+                        {
+                            "tag": "IRAM",
+                            "id": 1,
+                            "mem": {
+                                "startAddr": "0x20000000",
+                                "size": "0x5000"
+                            },
+                            "isChecked": "1",
+                            "noInit": false
+                        }
+                    ],
+                    "ROM": [
+                        {
+                            "tag": "IROM",
+                            "id": 1,
+                            "mem": {
+                                "startAddr": "0x08000000",
+                                "size": "0x10000"
+                            },
+                            "isChecked": "1",
+                            "isStartup": true
+                        }
+                    ]
+                },
+                "options": "null"
+            },
+            "uploader": "JLink",
+            "uploadConfig": {
+                "bin": "",
+                "baseAddr": "0x08000000",
+                "cpuInfo": {
+                    "vendor": "ST",
+                    "cpuName": "STM32F103C8"
+                },
+                "proType": 1,
+                "speed": 4000,
+                "otherCmds": ""
+            },
+            "uploadConfigMap": {},
+            "custom_dep": {
+                "name": "default",
+                "incList": [],
+                "libList": [],
+                "defineList": [
+                    "STM32F103xB"
+                ]
+            },
+            "builderOptions": {
+                "GCC": {
+                    "version": 5,
+                    "beforeBuildTasks": [],
+                    "afterBuildTasks": [],
+                    "global": {
+                        "$float-abi-type": "softfp",
+                        "output-debug-info": "enable",
+                        "misc-control": "--specs=nosys.specs --specs=nano.specs"
+                    },
+                    "c/cpp-compiler": {
+                        "language-c": "c11",
+                        "language-cpp": "c++11",
+                        "optimization": "level-debug",
+                        "warnings": "all-warnings",
+                        "one-elf-section-per-function": true,
+                        "one-elf-section-per-data": true,
+                        "C_FLAGS": "",
+                        "CXX_FLAGS": ""
+                    },
+                    "asm-compiler": {
+                        "ASM_FLAGS": ""
+                    },
+                    "linker": {
+                        "output-format": "elf",
+                        "remove-unused-input-sections": true,
+                        "LD_FLAGS": "",
+                        "LIB_FLAGS": "",
+                        "not-print-mem-usage": false
+                    }
+                }
+            }
+        }
+    },
+    "version": "3.5"
+}

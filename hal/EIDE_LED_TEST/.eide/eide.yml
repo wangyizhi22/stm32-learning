@@ -1,0 +1,110 @@
+version: "4.1"
+name: EIDE_LED_TEST
+type: ARM
+deviceName: STM32F103C8
+packDir: null
+srcDirs:
+  - Core/Src
+  - Drivers/STM32F1xx_HAL_Driver/Src
+  - Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc
+virtualFolder:
+  name: <virtual_root>
+  files: []
+  folders: []
+dependenceList: []
+outDir: build
+miscInfo:
+  uid: 1b9923dc9b2843959ba2c69bda4bc5ec
+targets:
+  Debug:
+    cppPreprocessAttrs:
+      defineList:
+        - USE_HAL_DRIVER
+        - STM32F103xB
+      incList:
+        - Core/Inc
+        - Drivers/STM32F1xx_HAL_Driver/Inc
+        - Drivers/STM32F1xx_HAL_Driver/Inc/Legacy
+        - Drivers/CMSIS/Device/ST/STM32F1xx/Include
+        - Drivers/CMSIS/Include
+      libList: []
+    excludeList:
+      - Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_msp_template.c
+      - Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_timebase_rtc_alarm_template.c
+      - Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_timebase_tim_template.c
+      - Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f100xb.s
+      - Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f100xe.s
+      - Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f101x6.s
+      - Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f101xb.s
+      - Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f101xe.s
+      - Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f101xg.s
+      - Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f102x6.s
+      - Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f102xb.s
+      - Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f103x6.s
+      - Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f103xe.s
+      - Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f103xg.s
+      - Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f105xc.s
+      - Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f107xc.s
+    settings:
+      debugger: cortex-debug
+    toolchain: GCC
+    toolchainConfigMap:
+      GCC:
+        archExtensions: ""
+        cpuType: Cortex-M3
+        floatingPointHardware: default
+        options:
+          version: 5
+          afterBuildTasks: []
+          asm-compiler:
+            ASM_FLAGS: ""
+          beforeBuildTasks: []
+          c/cpp-compiler:
+            CXX_FLAGS: ""
+            C_FLAGS: ""
+            language-c: c11
+            language-cpp: c++11
+            one-elf-section-per-data: true
+            one-elf-section-per-function: true
+            optimization: level-debug
+            warnings: all-warnings
+          global:
+            $float-abi-type: softfp
+            misc-control: --specs=nosys.specs --specs=nano.specs
+            output-debug-info: enable
+          linker:
+            LD_FLAGS: ""
+            LIB_FLAGS: -lm
+            not-print-mem-usage: false
+            output-format: elf
+            remove-unused-input-sections: true
+        scatterFilePath: STM32F103xx_FLASH.ld
+        storageLayout:
+          RAM:
+            - id: 1
+              isChecked: "1"
+              mem:
+                size: "0x5000"
+                startAddr: "0x20000000"
+              noInit: false
+              tag: IRAM
+          ROM:
+            - id: 1
+              isChecked: "1"
+              isStartup: true
+              mem:
+                size: "0x10000"
+                startAddr: "0x08000000"
+              tag: IROM
+        useCustomScatterFile: true
+    uploadConfigMap:
+      JLink:
+        baseAddr: "0x08000000"
+        bin: ""
+        cpuInfo:
+          cpuName: STM32F103C8
+          vendor: ST
+        otherCmds: ""
+        proType: 1
+        speed: 4000
+    uploader: JLink

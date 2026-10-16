@@ -1,0 +1,103 @@
+version: "4.1"
+name: bal_hal
+type: ARM
+deviceName: STM32F103C8
+packDir: null
+srcDirs:
+  - Core/Src
+  - Core/Startup
+  - MyLib/Src
+  - User/Src
+  - Test/Src
+  - Drivers/STM32F1xx_HAL_Driver/Src
+virtualFolder:
+  name: <virtual_root>
+  files: []
+  folders: []
+dependenceList: []
+outDir: build
+miscInfo:
+  uid: 7c1f4a6b2d9e83a05f13c7b6e4029d8a
+targets:
+  Debug:
+    cppPreprocessAttrs:
+      defineList:
+        - USE_HAL_DRIVER
+        - STM32F103xB
+      incList:
+        - Core/Inc
+        - MyLib/Inc
+        - User/Inc
+        - Test/Inc
+        - Drivers/STM32F1xx_HAL_Driver/Inc
+        - Drivers/STM32F1xx_HAL_Driver/Inc/Legacy
+        - Drivers/CMSIS/Device/ST/STM32F1xx/Include
+        - Drivers/CMSIS/Include
+      libList: []
+    excludeList: []
+    settings:
+      debugger: cortex-debug
+    toolchain: GCC
+    toolchainConfigMap:
+      GCC:
+        archExtensions: ""
+        cpuType: Cortex-M3
+        floatingPointHardware: default
+        options:
+          version: 5
+          afterBuildTasks: []
+          asm-compiler:
+            ASM_FLAGS: ""
+          beforeBuildTasks: []
+          c/cpp-compiler:
+            CXX_FLAGS: ""
+            C_FLAGS: ""
+            language-c: c11
+            language-cpp: c++11
+            one-elf-section-per-data: true
+            one-elf-section-per-function: true
+            optimization: level-debug
+            warnings: all-warnings
+          global:
+            $float-abi-type: softfp
+            misc-control: --specs=nosys.specs --specs=nano.specs
+            output-debug-info: enable
+          linker:
+            # -u _printf_float：强制链接浮点版 printf。
+            # Test/ 里的 My_USART_Printf("...%.3f...") 要用它打印角度/速度，
+            # 不加的话 %f 会打印成空白。代价约 9KB Flash。
+            LD_FLAGS: "-u _printf_float"
+            LIB_FLAGS: -lm
+            not-print-mem-usage: false
+            output-format: elf
+            remove-unused-input-sections: true
+        scatterFilePath: STM32F103C8TX_FLASH.ld
+        storageLayout:
+          RAM:
+            - id: 1
+              isChecked: "1"
+              mem:
+                size: "0x5000"
+                startAddr: "0x20000000"
+              noInit: false
+              tag: IRAM
+          ROM:
+            - id: 1
+              isChecked: "1"
+              isStartup: true
+              mem:
+                size: "0x10000"
+                startAddr: "0x08000000"
+              tag: IROM
+        useCustomScatterFile: true
+    uploadConfigMap:
+      JLink:
+        baseAddr: "0x08000000"
+        bin: ""
+        cpuInfo:
+          cpuName: STM32F103C8
+          vendor: ST
+        otherCmds: ""
+        proType: 1
+        speed: 4000
+    uploader: JLink

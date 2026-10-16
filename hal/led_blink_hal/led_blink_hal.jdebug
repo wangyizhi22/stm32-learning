@@ -1,0 +1,41 @@
+/*********************************************************************
+*                    SEGGER Microcontroller GmbH                     *
+*                        The Embedded Experts                        *
+**********************************************************************
+*                                                                    *
+*           (c) 2026 SEGGER Microcontroller GmbH                     *
+*                                                                    *
+**********************************************************************
+*
+*  Ozone 工程文件 —— led_blink_hal (STM32F103C8T6)
+*
+*  用法：双击本文件用 Ozone 打开，或 Ozone 里 File -> Open -> 选本文件。
+*
+*  注意：Ozone 在会话结束时可能重写此文件（把 $(ProjectDir) 展开成
+*        绝对路径、补上自动探测到的设置），这是正常行为。
+*
+*  前提：必须先执行过 VS Code / EIDE 的 Build，
+*        生成 build/Debug/led_blink_hal.elf。
+*
+**********************************************************************
+*/
+
+void OnProjectLoad (void) {
+  //
+  // 目标器件 —— 决定 RAM/Flash 布局与下载算法
+  //
+  Project.SetDevice("STM32F103C8");
+  Project.SetTargetIF("SWD");
+  Project.SetHostIF("USB", "");          // 空串 = 自动选第一个 J-Link
+  Project.SetTIFSpeed("4000 kHz");       // SWD 时钟 4MHz，够快也够稳
+
+  //
+  // Cortex-M3 内核寄存器视图
+  //
+  Project.AddSvdFile("$(InstallDir)/Config/CPU/Cortex-M3.svd");
+
+  //
+  // 载入 EIDE 编译出来的 ELF（带调试符号）
+  //
+  File.Open("$(ProjectDir)/build/Debug/led_blink_hal.elf");
+}

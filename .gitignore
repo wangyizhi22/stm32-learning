@@ -1,0 +1,102 @@
+# ============================================================
+#  .gitignore —— 告诉 git「这些文件永远不用管」
+#  规则：凡是可以自动重建的（编译产物）、别人家的（厂商库）、
+#        系统自动生成的（.DS_Store），一律不提交。
+#  注意：.gitignore 对「已经被 git 跟踪」的文件无效，
+#        所以一定要先写好这个文件，再执行 git add。
+# ============================================================
+
+# ---------- macOS 系统垃圾 ----------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+
+# ---------- C/C++ 编译中间产物 ----------
+*.o
+*.obj
+*.d
+*.su
+*.crf
+*.dep
+*.axf
+*.elf
+*.hex
+*.bin
+*.map
+*.lst
+*.bak
+*~
+a.out
+*.out
+
+# ---------- Keil MDK-ARM ----------
+Objects/
+Listings/
+DebugConfig/
+RTE/
+**/Objects/
+**/Listings/
+**/DebugConfig/
+*.uvguix.*
+*.uvoptx
+*.scvd
+# 注意：*.uvprojx 是工程定义文件，属于「源文件」，要保留
+
+# ---------- STM32CubeMX / CubeIDE ----------
+.mxproject
+**/Debug/
+**/Release/
+**/.settings/
+**/.cproject
+**/.project
+**/*.launch
+
+# ---------- EIDE（VS Code 插件）----------
+.eide/deps/
+*.eide.usr.ctx.json
+
+# ---------- PlatformIO ----------
+.pio/
+.pioenvs/
+.piolibdeps/
+# 注意：platformio.ini 是工程配置，要保留
+
+# ---------- CMake 生成物 ----------
+build/
+**/build/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+**/CMakeFiles/
+compile_commands.json
+
+# ---------- 厂商库：体积巨大且可重新生成，不提交 ----------
+# CubeMX 能重新生成，PlatformIO 的 framework=stm32cube 也会自动下载。
+# 如果哪天想让仓库「clone 下来直接能编译」，删掉下面这行即可。
+**/Drivers/
+
+# ---------- Python 工具缓存 ----------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# ---------- 编辑器临时文件 ----------
+*.swp
+*.swo
+.idea/
+
+# ---------- 课程二进制 / 压缩包（防止手滑把版权资料传上来）----------
+*.rar
+*.zip
+*.7z
+*.pptx
+*.pdf
+*.docx
+*.exe
+*.apk
+*.stl
+*.xlsx

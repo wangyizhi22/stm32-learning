@@ -1,0 +1,136 @@
+{
+    "name": "PROJECT_NAME",
+    "type": "ARM",
+    "dependenceList": [],
+    "srcDirs": [
+        "Core/Src",
+        "Drivers/STM32F1xx_HAL_Driver/Src",
+        "Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc"
+    ],
+    "outDir": "build",
+    "deviceName": "STM32F103C8",
+    "packDir": null,
+    "miscInfo": {},
+    "virtualFolder": {
+        "name": "<virtual_root>",
+        "files": [],
+        "folders": []
+    },
+    "targets": {
+        "Debug": {
+            "excludeList": [
+                "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_msp_template.c",
+                "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_timebase_rtc_alarm_template.c",
+                "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_timebase_tim_template.c",
+                "Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f100xb.s",
+                "Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f100xe.s",
+                "Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f101x6.s",
+                "Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f101xb.s",
+                "Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f101xe.s",
+                "Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f101xg.s",
+                "Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f102x6.s",
+                "Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f102xb.s",
+                "Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f103x6.s",
+                "Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f103xe.s",
+                "Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f103xg.s",
+                "Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f105xc.s",
+                "Drivers/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f107xc.s"
+            ],
+            "toolchain": "GCC",
+            "compileConfig": {
+                "cpuType": "Cortex-M3",
+                "floatingPointHardware": "default",
+                "useCustomScatterFile": true,
+                "scatterFilePath": "STM32F103xx_FLASH.ld",
+                "storageLayout": {
+                    "RAM": [
+                        {
+                            "tag": "IRAM",
+                            "id": 1,
+                            "mem": {
+                                "startAddr": "0x20000000",
+                                "size": "0x5000"
+                            },
+                            "isChecked": "1",
+                            "noInit": false
+                        }
+                    ],
+                    "ROM": [
+                        {
+                            "tag": "IROM",
+                            "id": 1,
+                            "mem": {
+                                "startAddr": "0x08000000",
+                                "size": "0x10000"
+                            },
+                            "isChecked": "1",
+                            "isStartup": true
+                        }
+                    ]
+                },
+                "options": "null"
+            },
+            "uploader": "JLink",
+            "uploadConfig": {
+                "bin": "",
+                "baseAddr": "0x08000000",
+                "cpuInfo": {
+                    "vendor": "ST",
+                    "cpuName": "STM32F103C8"
+                },
+                "proType": 1,
+                "speed": 4000,
+                "otherCmds": ""
+            },
+            "uploadConfigMap": {},
+            "custom_dep": {
+                "name": "default",
+                "incList": [
+                    "Core/Inc",
+                    "Drivers/STM32F1xx_HAL_Driver/Inc",
+                    "Drivers/STM32F1xx_HAL_Driver/Inc/Legacy",
+                    "Drivers/CMSIS/Device/ST/STM32F1xx/Include",
+                    "Drivers/CMSIS/Include"
+                ],
+                "libList": [],
+                "defineList": [
+                    "USE_HAL_DRIVER",
+                    "STM32F103xB"
+                ]
+            },
+            "builderOptions": {
+                "GCC": {
+                    "version": 5,
+                    "beforeBuildTasks": [],
+                    "afterBuildTasks": [],
+                    "global": {
+                        "$float-abi-type": "softfp",
+                        "output-debug-info": "enable",
+                        "misc-control": "--specs=nosys.specs --specs=nano.specs"
+                    },
+                    "c/cpp-compiler": {
+                        "language-c": "c11",
+                        "language-cpp": "c++11",
+                        "optimization": "level-debug",
+                        "warnings": "all-warnings",
+                        "one-elf-section-per-function": true,
+                        "one-elf-section-per-data": true,
+                        "C_FLAGS": "",
+                        "CXX_FLAGS": ""
+                    },
+                    "asm-compiler": {
+                        "ASM_FLAGS": ""
+                    },
+                    "linker": {
+                        "output-format": "elf",
+                        "remove-unused-input-sections": true,
+                        "LD_FLAGS": "",
+                        "LIB_FLAGS": "-lm",
+                        "not-print-mem-usage": false
+                    }
+                }
+            }
+        }
+    },
+    "version": "3.5"
+}

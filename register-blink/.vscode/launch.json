@@ -1,0 +1,37 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "调试（ST-Link）",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "openocd",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/build/stm32-blink.elf",
+            "device": "STM32F103C8",
+
+            // OpenOCD 的配置文件：先接口，再目标芯片
+            "configFiles": [
+                "interface/stlink.cfg",
+                "target/stm32f1x.cfg"
+            ],
+
+            // OpenOCD 脚本目录（那些 .cfg 文件就在这儿）
+            "searchDir": [
+                "${env:HOME}/stm32-tools/xpack-openocd-0.12.0-7/openocd/scripts"
+            ],
+
+            // 克隆版 ST-Link 跑 1000kHz 会掉线，用 950kHz 更稳
+            "openOCDLaunchCommands": [
+                "adapter speed 950"
+            ],
+
+            "preLaunchTask": "编译",
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "none",
+
+            // 调试时按 F5 会自动重新编译再下载，改完代码直接按就行
+            "svdFile": ""
+        }
+    ]
+}

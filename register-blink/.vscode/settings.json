@@ -1,0 +1,14 @@
+{
+    // Cortex-Debug 扩展需要的两个路径
+    "cortex-debug.openocdPath": "${env:HOME}/stm32-tools/xpack-openocd-0.12.0-7/bin/openocd",
+    "cortex-debug.armToolchainPath": "${env:HOME}/stm32-tools/xpack-arm-none-eabi-gcc-15.2.1-1.1/bin",
+
+    // 让 VS Code 别去扫 build 和 ST 官方驱动目录，编辑器会快很多
+    "files.exclude": {
+        "build": true
+    },
+    "search.exclude": {
+        "build": true,
+        "Drivers": true
+    }
+}
